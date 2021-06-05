@@ -19,7 +19,7 @@ public class RestService {
     }
 
     public void changeavailable(Long id){
-        restTemplate.getForEntity("http://localhost:8080/movies/"+ id,Void.TYPE);
+        restTemplate.put("http://localhost:8080/movies/"+ id,Void.TYPE);
     }
 
 }
