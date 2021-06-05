@@ -6,15 +6,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
-
-@org.springframework.web.bind.annotation.RestController
-public class RestController {
+@RestController
+public class RentalController {
 
     private final RestService restService;
 
-    public RestController(RestService restService) {
+    public RentalController(RestService restService) {
         this.restService = restService;
     }
 
@@ -23,9 +23,15 @@ public class RestController {
         return ResponseEntity.ok(restService.getMovie(movieId));
     }
 
-    @PutMapping("/movies/{movieId}")
-    public ResponseEntity<Void> changeavailable(@PathVariable("movieId") Long movieId) {
-        restService.changeavailable(movieId);
+    @PutMapping("/movies/back/{movieId}")
+    public ResponseEntity<Void> backMovie(@PathVariable("movieId") Long movieId) {
+        restService.backMovie(movieId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/movies/rent/{movieId}")
+    public ResponseEntity<Void> rentMovie(@PathVariable("movieId") Long movieId) {
+        restService.rentMovie(movieId);
         return ResponseEntity.ok().build();
     }
 

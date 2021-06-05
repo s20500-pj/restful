@@ -18,8 +18,12 @@ public class RestService {
         return restTemplate.getForObject("http://localhost:8080/" + id,Movie.class);
     }
 
-    public void changeavailable(Long id){
-        restTemplate.put("http://localhost:8080/movies/"+ id,Void.TYPE);
+    public void backMovie(Long id){
+        restTemplate.put("http://localhost:8080/movies/back/"+ id,Void.TYPE);
+    }
+
+    public void rentMovie(Long id){
+        restTemplate.put("http://localhost:8080/movies/rent/"+ id,Void.TYPE);
     }
 
 }
